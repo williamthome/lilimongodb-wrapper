@@ -1,0 +1,6 @@
+/.vscode/
+/@types/
+/coverage/
+/public/
+**/node_modules/
+tester

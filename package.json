@@ -1,0 +1,88 @@
+{
+  "name": "@williamthome/lilimongodb-wrapper",
+  "version": "0.0.1",
+  "description": "Mongodb wrapper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamthome/lilimongodb-wrapper.git"
+  },
+  "homepage": "https://github.com/williamthome/lilimongodb-wrapper.git",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "rimraf dist && npx ttsc -p tsconfig.build.json",
+    "link": "npm run build && npm link",
+    "update": "npx npm-check-updates -u && npm install",
+    "lint": "npx eslint src/* --ext .ts --cache --fix",
+    "format": "npx prettier --write ./src/**/*.{ts,json}",
+    "test": "npx jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles --forceExit",
+    "test:verbose": "npx jest --passWithNoTests --runInBand --detectOpenHandles --forceExit",
+    "test:unit": "npm test -- --watch --testPathPattern=\".*/__tests__/.*.spec.ts$\"",
+    "test:unit:verbose": "npm run test:verbose -- --watch --testPathPattern=\".*/__tests__/.*.spec.ts$\"",
+    "test:integration": "npm test -- --watch --testPathPattern=\".*/__tests__/.*.test.ts$\"",
+    "test:integration:verbose": "npm run test:verbose -- --watch --testPathPattern=\".*/__tests__/.*.test.ts$\"",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage",
+    "test:clear": "npx jest --clearCache",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "William Fank Thomé",
+  "contributors": [
+    {
+      "name": "William Fank Thomé",
+      "email": "williamthome@hotmail.com",
+      "url": "https://github.com/williamthome"
+    }
+  ],
+  "license": "ISC",
+  "private": false,
+  "keywords": [
+    "node",
+    "nodejs",
+    "javascript",
+    "typescript",
+    "db",
+    "database",
+    "wrapper",
+    "mongo",
+    "mongodb"
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/mongodb": "^3.6.12",
+    "@types/node": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "git-commit-msg-linter": "^3.1.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
+    "mongodb-memory-server": "^6.9.6",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6",
+    "ts-node-dev": "^1.1.6",
+    "ts-transformer-keys": "^0.4.3",
+    "tsconfig-paths": "^3.9.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.2.4",
+    "typescript-transform-paths": "^2.2.3"
+  },
+  "dependencies": {
+    "@williamthome/lilidb-wrapper": "^0.0.2",
+    "mongodb": "^3.6.6"
+  }
+}

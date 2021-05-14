@@ -1,0 +1,7 @@
+{
+  "*.{ts,json}": [
+    "npx eslint --cache --fix",
+    "npx prettier --write",
+    "npm run test:staged"
+  ]
+}
